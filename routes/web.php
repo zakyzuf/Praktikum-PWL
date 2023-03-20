@@ -13,26 +13,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'home']);
+// Route::get('/', [HomeController::class, 'home']);
 
-Route::prefix('/product')->group(function (){
-    Route::get('/edugames', [ProductController::class, 'edugames']);
-    Route::get('/kidsgames', [ProductController::class, 'kidsgames']);
-    Route::get('/story', [ProductController::class, 'story']);
-    Route::get('/songs', [ProductController::class, 'songs']);
+// Route::prefix('/product')->group(function (){
+//     Route::get('/edugames', [ProductController::class, 'edugames']);
+//     Route::get('/kidsgames', [ProductController::class, 'kidsgames']);
+//     Route::get('/story', [ProductController::class, 'story']);
+//     Route::get('/songs', [ProductController::class, 'songs']);
+// });
+
+// Route::get('/news/{$id}', [NewsController::class, 'news']);
+
+// Route::prefix('/category')->group(function(){
+//     Route::get('/karir', [CategoryController::class, 'karir']);
+//     Route::get('/magang', [CategoryController::class, 'magang']);
+//     Route::get('/kunjungan', [CategoryController::class, 'kunjungan']);
+// });
+
+// Route::get('/about', function(){
+//     return redirect('https://www.educastudio.com/about-us');
+// });
+
+// Route::resource('/contact', ContactController::class)->only(['index']);
+
+Route::get('/', function() {
+    return view('home');
 });
 
-Route::get('/news/{$id}', [NewsController::class, 'news']);
+// Auth::routes();
 
-Route::prefix('/category')->group(function(){
-    Route::get('/karir', [CategoryController::class, 'karir']);
-    Route::get('/magang', [CategoryController::class, 'magang']);
-    Route::get('/kunjungan', [CategoryController::class, 'kunjungan']);
-});
-
-Route::get('/about', function(){
-    return redirect('https://www.educastudio.com/about-us');
-});
-
-Route::resource('/contact', ContactController::class)->only(['index']);
-
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
