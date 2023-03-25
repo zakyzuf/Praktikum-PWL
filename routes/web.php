@@ -42,4 +42,9 @@ Route::get('/', function() {
 
 // Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', function(){return view('home');})->name('home');
+Route::get('/about',function(){return view('about-us');})->name('about');
+Route::get('/news',function(){return view('news');})->name('news');
+Route::get('/product',function(){return view('product');})->name('product');
+Route::get('/program',function(){return view('program');})->name('program');
+Route::get('/contact',function(){return view('contact-us');})->name('contact-us');
