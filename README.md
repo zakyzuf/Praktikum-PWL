@@ -64,3 +64,26 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Some Notes Regarding Using This Repository
+1. Clone this repository by copying the repository url
+
+2. After cloning, type in the terminal the following command. The purpose is that APP KEY updates automatically and vendors will be installed and .env will be formed
+     ```shell
+        composer update
+     ```
+     ```shell
+        cp .env.example .env
+     ```
+     ```shell
+        php artisan key:generate
+     ```
+3. Install the following packages
+    - Laravel Debugbar -> To help debugging process
+        ```shell
+        composer require barryvdh/laravel-debugbar --dev
+        ```
+    - Laravel Query Detector -> To help the query checking process
+        ```shell
+        composer require beyondcode/laravel-query-detector --dev
+        ```
