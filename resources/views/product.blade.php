@@ -49,108 +49,24 @@
 
 @section('content')
 <div class="tm-overflow-hidden row">
-    <div class="tm-gallery col-lg-9 col-md-9 col-sm-8 col-xs-12">
-      <h3 class="tm-gallery-title">Toyota (53)</h3>          
-      <div class="tm-item-container">
-        <img src="{{ asset('assets/img/2.jpg') }}" alt="Image">
-        <p class="tm-item-description">pellentesque eu, pretium quissem</p><hr>
-        <div class="tm-item-price-container">
-          <span class="tm-item-price">$ 50,000</span>
-          <a href="#" class="tm-item-link">
-            <span class="tm-item-action">Add to Cart</span>
-            <img src="{{ asset('assets/img/plus.png') }}" class="tm-item-add-icon" alt="Image">
-          </a>
-        </div>
-      </div>
-      <div class="tm-item-container">
-        <img src="{{ asset('assets/img/2.jpg') }}" alt="Image">
-        <p class="tm-item-description">pellentesque eu, pretium quissem</p><hr>
-        <div class="tm-item-price-container">
-          <span class="tm-item-price">$ 34,000</span>
-          <a href="#" class="tm-item-link">
-            <span class="tm-item-action">Add to Cart</span>
-            <img src="{{ asset('assets/img/plus.png') }}" class="tm-item-add-icon" alt="Image">
-          </a>
-        </div>   
-      </div>
-      <div class="tm-item-container">
-        <img src="{{ asset('assets/img/2.jpg') }}" alt="Image">
-        <p class="tm-item-description">pellentesque eu, pretium quissem</p><hr>
-        <div class="tm-item-price-container">
-          <span class="tm-item-price">$ 65,000</span>
-          <a href="#" class="tm-item-link">
-            <span class="tm-item-action">Add to Cart</span>
-            <img src="{{ asset('assets/img/plus.png') }}" class="tm-item-add-icon" alt="Image">
-          </a>
-        </div>         
-      </div>
-      <div class="tm-item-container">
-        <img src="{{ asset('assets/img/2.jpg') }}" alt="Image">
-        <p class="tm-item-description">pellentesque eu, pretium quissem</p><hr>
-        <div class="tm-item-price-container">
-          <span class="tm-item-price">$ 20,000</span>
-          <a href="#" class="tm-item-link">
-            <span class="tm-item-action">Add to Cart</span>
-            <img src="{{ asset('assets/img/plus.png') }}" class="tm-item-add-icon" alt="Image">
-          </a>
-        </div>            
-      </div>
-      <div class="tm-item-container">
-        <img src="{{ asset('assets/img/2.jpg') }}" alt="Image">
-        <p class="tm-item-description">pellentesque eu, pretium quissem</p><hr>
-        <div class="tm-item-price-container">
-          <span class="tm-item-price">$ 134,000</span>
-          <a href="#" class="tm-item-link">
-            <span class="tm-item-action">Add to Cart</span>
-            <img src="{{ asset('assets/img/plus.png') }}" class="tm-item-add-icon" alt="Image">
-          </a>
-        </div>            
-      </div>
-      <div class="tm-item-container">
-        <img src="{{ asset('assets/img/2.jpg') }}" alt="Image">
-        <p class="tm-item-description">pellentesque eu, pretium quissem</p><hr>
-        <div class="tm-item-price-container">
-          <span class="tm-item-price">$ 55,000</span>
-          <a href="#" class="tm-item-link">
-            <span class="tm-item-action">Add to Cart</span>
-            <img src="{{ asset('assets/img/plus.png') }}" class="tm-item-add-icon" alt="Image">
-          </a>
-        </div>            
-      </div>
-      <div class="tm-item-container">
-        <img src="{{ asset('assets/img/2.jpg') }}" alt="Image">
-        <p class="tm-item-description">pellentesque eu, pretium quissem</p><hr>
-        <div class="tm-item-price-container">
-          <span class="tm-item-price">$ 20,000</span>
-          <a href="#" class="tm-item-link">
-            <span class="tm-item-action">Add to Cart</span>
-            <img src="{{ asset('assets/img/plus.png') }}" class="tm-item-add-icon" alt="Image">
-          </a>
-        </div>            
-      </div>
-      <div class="tm-item-container">
-        <img src="{{ asset('assets/img/2.jpg') }}" alt="Image">
-        <p class="tm-item-description">pellentesque eu, pretium quissem</p><hr>
-        <div class="tm-item-price-container">
-          <span class="tm-item-price">$ 134,000</span>
-          <a href="#" class="tm-item-link">
-            <span class="tm-item-action">Add to Cart</span>
-            <img src="{{ asset('assets/img/plus.png') }}" class="tm-item-add-icon" alt="Image">
-          </a>
-        </div>            
-      </div>
-      <div class="tm-item-container">
-        <img src="{{ asset('assets/img/2.jpg') }}" alt="Image">
-        <p class="tm-item-description">pellentesque eu, pretium quissem</p><hr>
-        <div class="tm-item-price-container">
-          <span class="tm-item-price">$ 55,000</span>
-          <a href="#" class="tm-item-link">
-            <span class="tm-item-action">Add to Cart</span>
-            <img src="{{ asset('assets/img/plus.png') }}" class="tm-item-add-icon" alt="Image">
-          </a>
-        </div>            
+  <div class="tm-gallery col-lg-9 col-md-9 col-sm-8 col-xs-12">
+    <h3 class="tm-gallery-title">Toyota (53)</h3> 
+    @foreach ($products as $product)         
+    <div class="tm-item-container">
+      <img src="{{ $product->image }}" alt="Image" style="width: 200px">
+      <p class="tm-item-description">{{ $product->name }}</p>
+      <p class="tm-item-description">{{ $product->description }}</p><hr>
+      <div class="tm-item-price-container">
+        <span class="tm-item-price">${{ $product->price }}</span>
+        <a href="#" class="tm-item-link">
+          <span class="tm-item-action">Add to Cart</span>
+          <img src="{{ asset('assets/img/plus.png') }}" class="tm-item-add-icon" alt="Image">
+        </a>
       </div>
     </div>
+    @endforeach
+  </div>
+</div>
     <aside class="tm-gallery-aside col-lg-3 col-md-3 col-sm-4 col-xs-12">
       <nav class="tm-gallery-nav">
         <h2 class="tm-gallery-nav-title">Category <i class="fa fa-caret-up"></i></h2>

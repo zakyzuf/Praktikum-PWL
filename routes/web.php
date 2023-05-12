@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,10 @@ Route::get('/', function() {
 Route::get('/home', function(){return view('home');})->name('home');
 Route::get('/about',function(){return view('about-us');})->name('about');
 Route::get('/news',function(){return view('news');})->name('news');
-Route::get('/product',function(){return view('product');})->name('product');
+Route::get('/product',function() {
+    return view('product', [
+        'products' => Product::all()
+    ]);
+})->name('product');
 Route::get('/program',function(){return view('program');})->name('program');
 Route::get('/contact',function(){return view('contact-us');})->name('contact-us');
