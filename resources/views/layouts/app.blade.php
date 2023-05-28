@@ -1,75 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>@yield('title')</title>
-  <meta name="description" content="">
-<!-- 
-Motor Template
-http://www.templatemo.com/tm-463-motor
--->
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>
-  <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/css/templatemo-style.css') }}" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-      </head>
-      <body class="about-page">
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Preloader -->
-        <div id="loader-wrapper">
-          <div id="loader"></div>
-          <div class="loader-section section-left"></div>
-          <div class="loader-section section-right"></div>
-        </div>
-        <!-- End Preloader -->
-        <section class="templatemo-top-section" style="margin-bottom: 0px">
-        @include('layouts.header')
-        @yield('header-content')
-        <section>
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!--Main content-->
-    <section class="container margin-bottom-50"> 
-      @yield('content')
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+</head>
+<body>
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav me-auto">
 
-      <!--banner-->
-      @include('layouts.banner')
-      
-    </section> <!-- Main content -->
-    
-    <!--Footer content-->
-    <footer class="tm-footer">
-      @include('layouts.footer')
-    <footer>
-    <!-- Footer content-->
-    
-    <!-- JS -->
-    <script type="text/javascript" src="{{ asset('assets/js/jquery-1.11.2.min.js') }}"></script>      <!-- jQuery -->
-    <script type="text/javascript" src="{{ asset('assets/js/templatemo-script.js') }}"></script>      <!-- Templatemo Script -->
-    <script defer src="{{ asset('assets/js/jquery.flexslider-min.js') }}"></script><!-- FlexSlider -->
-    <script>
-      $(window).load(function() {
-        $('.flexslider').flexslider({
-          animation: "slide",
-          slideshow: false,
-          prevText: "&#xf104;",
-          nextText: "&#xf105;"
-        });
+                    </ul>
 
-        // Remove preloader
-        // https://ihatetomatoes.net/create-custom-preloading-screen/
-        $('body').addClass('loaded');
-      });
-    </script>
-  </body>
-  </html>
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ms-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="py-4">
+            @yield('content')
+        </main>
+    </div>
+</body>
+</html>
