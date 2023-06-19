@@ -28,7 +28,13 @@
                                 class="form-control" id="Jurusan" aria-describedby="Jurusan"> </div>
                         <div class="form-group"> <label for="No_Handphone">No_Handphone</label> <input type="No_Handphone"
                                 name="No_Handphone" class="form-control" id="No_Handphone" aria-describedby="No_Handphone">
-                        </div> <button type="submit" class="btn btn-primary">Submit</button>
+                        </div> 
+                        <div class="form-group"> <label for="E-mail">
+                            Email</label> <input type="email" name="Email"
+                            class="form-control" id="E-mail" aria-describedby="E-mail"> </div>
+                        <div class="form-group"> <label for="Tanggal Lahir">Tanggal lahir</label> <input type="date" name="Tanggal_lahir"
+                                class="form-control" id="Tanggal_lahir" aria-describedby="Tanggal_lahir"> </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>

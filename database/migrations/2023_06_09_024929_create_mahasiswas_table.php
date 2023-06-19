@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('Kelas', 10);
             $table->string('Jurusan', 100);
             $table->string('No_Handphone', 30);
+            $table->string('Email')->unique();
+            $table->string('Tanggal_lahir');
             $table->timestamps();
         });
     }
